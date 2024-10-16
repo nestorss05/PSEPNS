@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Users\\Nestor\\Documents\\2DAM\\PSP\\T0_B2_EJ9_NSS\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E7118E6F-D6D1-4115-B73D-3B075DB71E03}|T0_B2_EJ9_NSS\\T0_B2_EJ9_NSS.pyproj|D:\\Users\\Nestor\\Documents\\2DAM\\PSP\\T0_B2_EJ9_NSS\\T0_B2_EJ9_NSS\\T0_B2_EJ9_NSS.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{E7118E6F-D6D1-4115-B73D-3B075DB71E03}|T0_B2_EJ9_NSS\\T0_B2_EJ9_NSS.pyproj|solutionrelative:T0_B2_EJ9_NSS\\T0_B2_EJ9_NSS.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "T0_B2_EJ9_NSS.py",
+              "DocumentMoniker": "D:\\Users\\Nestor\\Documents\\2DAM\\PSP\\T0_B2_EJ9_NSS\\T0_B2_EJ9_NSS\\T0_B2_EJ9_NSS.py",
+              "RelativeDocumentMoniker": "T0_B2_EJ9_NSS\\T0_B2_EJ9_NSS.py",
+              "ToolTip": "D:\\Users\\Nestor\\Documents\\2DAM\\PSP\\T0_B2_EJ9_NSS\\T0_B2_EJ9_NSS\\T0_B2_EJ9_NSS.py",
+              "RelativeToolTip": "T0_B2_EJ9_NSS\\T0_B2_EJ9_NSS.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAABMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2024-09-25T17:48:21.292Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
