@@ -1,5 +1,0 @@
-[
-    {"id": 1, "dni": "23556785F", "Nombre": "Pepitto", "Apellidos": "Sanchez", "Telefono": 111111111, "Especialidad": "Investigacion"},
-    {"id": 2, "dni": "77443678R", "Nombre": "Florentino", "Apellidos": "Martinez", "Telefono": 222222222, "Especialidad": "Ambiental"},
-    {"id": 3, "dni": "88643357T", "Nombre": "Eusebio", "Apellidos": "Flores", "Telefono": 333333333, "Especialidad": "Turistico"}
-]
