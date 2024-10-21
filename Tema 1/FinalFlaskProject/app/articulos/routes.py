@@ -1,24 +1,27 @@
 from flask import *
+from flask_jwt_extended import jwt_required
 
 articulosBP = Blueprint('articulos', __name__)
 
 def leeFichero():
-    archivo = open("database.json", "r")
+    archivo = open("app/articulos/database.json", "r")
     articulos = json.load(archivo)
     archivo.close()
     return articulos
 
 def escribeFichero(articulos):
-    archivo = open("database.json", "w")
+    archivo = open("app/articulos/database.json", "w")
     json.dump(articulos, archivo)
     archivo.close()
 
 @articulosBP.get("/")
+@jwt_required()
 def get_articulos():
     articulos = leeFichero()
     return articulos
 
 @articulosBP.get("/<int:id>")
+@jwt_required()
 def get_articulo(id):
     articulos = leeFichero()
     for articulo in articulos:
@@ -31,6 +34,7 @@ def _find_next_id():
     return max(articulo["id"] for articulo in articulos) + 1
 
 @articulosBP.post("/")
+@jwt_required()
 def add_articulo():
     articulos = leeFichero()
     if request.is_json:
@@ -43,6 +47,7 @@ def add_articulo():
 
 @articulosBP.put("/<int:id>")
 @articulosBP.patch("/<int:id>")
+@jwt_required()
 def modify_articulo(id):
     articulos = leeFichero()
     if request.is_json:
@@ -56,6 +61,7 @@ def modify_articulo(id):
     return {"error": "La peticion debe ser JSON"}, 415
 
 @articulosBP.delete("/<int:id>")
+@jwt_required()
 def delete_articulo(id):
     articulos = leeFichero()
     for articulo in articulos:

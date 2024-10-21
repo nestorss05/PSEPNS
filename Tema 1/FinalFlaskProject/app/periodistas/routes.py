@@ -1,24 +1,27 @@
 from flask import *
+from flask_jwt_extended import jwt_required
 
 periodistasBP = Blueprint('periodistas', __name__)
 
 def leeFichero():
-    archivo = open("database.json", "r")
+    archivo = open("app/periodistas/database.json", "r")
     periodistas = json.load(archivo)
     archivo.close()
     return periodistas
 
 def escribeFichero(periodistas):
-    archivo = open("database.json", "w")
+    archivo = open("app/periodistas/database.json", "w")
     json.dump(periodistas, archivo)
     archivo.close()
 
 @periodistasBP.get("/")
+@jwt_required()
 def get_periodistas():
     periodistas = leeFichero()
     return jsonify(periodistas)
 
 @periodistasBP.get("/<int:id>")
+@jwt_required()
 def get_periodista(id):
     periodistas = leeFichero()
     for periodista in periodistas:
@@ -31,6 +34,7 @@ def _find_next_id():
     return max(periodista["id"] for periodista in periodistas) + 1
 
 @periodistasBP.post("/")
+@jwt_required()
 def add_periodista():
     periodistas = leeFichero()
     if request.is_json:
@@ -43,6 +47,7 @@ def add_periodista():
 
 @periodistasBP.put("/<int:id>")
 @periodistasBP.patch("/<int:id>")
+@jwt_required()
 def modify_periodista(id):
     periodistas = leeFichero()
     if request.is_json:
@@ -56,6 +61,7 @@ def modify_periodista(id):
     return {"error": "La peticion debe ser JSON"}, 415
 
 @periodistasBP.delete("/<int:id>")
+@jwt_required()
 def delete_periodista(id):
     periodistas = leeFichero()
     for periodista in periodistas:
