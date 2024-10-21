@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35312.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "T0_B1_EJ9_NSS", "T0_B1_EJ1_NSS\T0_B1_EJ9_NSS.pyproj", "{242B54D9-A79E-4FE0-A938-DD4D2721A7A1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{242B54D9-A79E-4FE0-A938-DD4D2721A7A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{242B54D9-A79E-4FE0-A938-DD4D2721A7A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2C6AE1D1-CDE8-4692-81D9-739329E819A8}
+	EndGlobalSection
+EndGlobal
