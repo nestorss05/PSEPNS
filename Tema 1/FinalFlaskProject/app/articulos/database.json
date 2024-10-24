@@ -1,5 +1,5 @@
 [
-    {"id": 1, "dni": "23556785F", "Nombre": "Pepitto", "Apellidos": "Sanchez", "Telefono": 111111111, "Especialidad": "Investigacion"},
-    {"id": 2, "dni": "77443678R", "Nombre": "Florentino", "Apellidos": "Martinez", "Telefono": 222222222, "Especialidad": "Ambiental"},
-    {"id": 3, "dni": "88643357T", "Nombre": "Eusebio", "Apellidos": "Flores", "Telefono": 333333333, "Especialidad": "Turistico"}
-]
+        {"id": 1, "Titulo": "Caen bombas nucleares por el territorio verdirrojo", "Cuerpo": "El presidente de la republica disuelve el gobierno, el pais y establece el estado de guerra", "Fecha": "20/02/2022", "idPeriodista": 1},
+        {"id": 2, "Titulo": "Plaza Mayor de Once abarrotada por la victoria republicana", "Cuerpo": "Los verdirrojos celebran la victoria, causando que la plaza mayor quede abarrotada", "Fecha": "1/06/2023", "idPeriodista": 3},
+        {"id": 3, "Titulo": "Masivos incendios en las siete torres causan grave deterioro ambiental", "Cuerpo": "El ataque a las siete torres han causado una gran cantidad de contaminacion por toda la ciudad de Once", "Fecha": "2/11/2024", "idPeriodista": 2}
+    ]

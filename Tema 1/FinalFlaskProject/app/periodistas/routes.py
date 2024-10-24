@@ -15,13 +15,11 @@ def escribeFichero(periodistas):
     archivo.close()
 
 @periodistasBP.get("/")
-@jwt_required()
 def get_periodistas():
     periodistas = leeFichero()
     return jsonify(periodistas)
 
 @periodistasBP.get("/<int:id>")
-@jwt_required()
 def get_periodista(id):
     periodistas = leeFichero()
     for periodista in periodistas:

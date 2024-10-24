@@ -15,13 +15,11 @@ def escribeFichero(articulos):
     archivo.close()
 
 @articulosBP.get("/")
-@jwt_required()
 def get_articulos():
     articulos = leeFichero()
     return articulos
 
 @articulosBP.get("/<int:id>")
-@jwt_required()
 def get_articulo(id):
     articulos = leeFichero()
     for articulo in articulos:
