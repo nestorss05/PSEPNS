@@ -1,5 +1,10 @@
 #coding: latin1
+import json
+
 from pip._vendor import requests
+from models.Articulo import Articulo
+from models.Periodista import Periodista
+
 
 def main():
     login()
@@ -34,7 +39,8 @@ def programa(token: str):
                     print("Se ha producido un error")
             except Exception as e:
                 print(e)
-
+        else:
+            print("WIP")
         mostrarMenu()
         opc = int(input("Inserta una opcion: "))
 
