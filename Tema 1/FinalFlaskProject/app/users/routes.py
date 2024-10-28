@@ -22,23 +22,18 @@ def escribeFichero(datos):
     json.dump(datos, archivo)
     archivo.close()
 
-@usersBP.get('/')
+@usersBP.post('/login')
 def loginUser():
-    users = leeFichero()
-    if request.is_json:
-        user = request.get_json()
-        username = user['username']
-        password = user['password'].encode('utf-8')
-        for userFile in users:
-            if userFile['username'] == username:
-                passwordFile = userFile['password']
-                if bcrypt.checkpw(password, bytes.fromhex(passwordFile)):
-                    token = create_access_token(identity=username)
-                    return {'token': token}, 200
-                else:
-                    return {'error': 'Incorrect username or password'}, 401
-        return {'error': 'User not found'}, 404
-    return {"error": "Request must be JSON"}, 415
+   if request.is_json:
+       user = request.get_json()
+       username = user['username']
+       password = user['password']
+       usuarios = leeFichero()
+       for usuario in usuarios:
+           if usuario['username'] == username and bcrypt.checkpw(password.encode('utf-8'),bytes.fromhex(usuario['password'])):
+               return {'token': create_access_token(identity=username)}, 200
+       return "", 401
+   return {"error": "Request must be JSON"}, 415
 
 @usersBP.post('/')
 def registerUser():
