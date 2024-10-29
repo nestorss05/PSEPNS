@@ -1,6 +1,6 @@
 #coding: latin1
 from pip._vendor import requests
-from app import FunPeriodistas
+from app import FunPeriodistas, FunArticulos
 
 
 def main():
@@ -35,8 +35,48 @@ def programa(token: str):
                 FunPeriodistas.verUnPeriodista()
             except Exception as e:
                 print(e)
+        elif opc == 3:
+            try:
+                FunPeriodistas.añadirPeriodista(token)
+            except Exception as e:
+                print(e)
+        elif opc == 4:
+            try:
+                FunPeriodistas.modificarPeriodista(token)
+            except Exception as e:
+                print(e)
+        elif opc == 5:
+            try:
+                FunPeriodistas.eliminarPeriodista(token)
+            except Exception as e:
+                print(e)
+        elif opc == 6:
+            try:
+                FunArticulos.verArticulos()
+            except Exception as e:
+                print(e)
+        elif opc == 7:
+            try:
+                FunArticulos.verUnArticulo()
+            except Exception as e:
+                print(e)
+        elif opc == 8:
+            try:
+                FunArticulos.añadirArticulo(token)
+            except Exception as e:
+                print(e)
+        elif opc == 9:
+            try:
+                FunArticulos.modificarArticulo(token)
+            except Exception as e:
+                print(e)
+        elif opc == 10:
+            try:
+                FunArticulos.eliminarArticulo(token)
+            except Exception as e:
+                print(e)
         else:
-            print("Resto de opciones sin hacer de momento")
+            print("ERROR: opcion invalida")
         mostrarMenu()
         opc = int(input("Inserta una opcion: "))
 
