@@ -1,9 +1,6 @@
 #coding: latin1
-import json
-
 from pip._vendor import requests
-from models.Articulo import Articulo
-from models.Periodista import Periodista
+from app import FunPeriodistas
 
 
 def main():
@@ -20,7 +17,6 @@ def login():
     )
     if resultado:
         token = resultado.json().get("token")
-        print(token)
         programa(token)
     else:
         print("ERROR: nombre de usuario y/o contraseña incorrecta")
@@ -31,16 +27,16 @@ def programa(token: str):
     while opc != 0:
         if opc == 1:
             try:
-                response = requests.get("http://localhost:5050/periodistas/",
-                                        headers={"Authorization": "Bearer " + token})
-                if response.status_code == 200:
-                    print(response.json())
-                else:
-                    print("Se ha producido un error")
+                FunPeriodistas.verPeriodistas()
+            except Exception as e:
+                print(e)
+        elif opc == 2:
+            try:
+                FunPeriodistas.verUnPeriodista()
             except Exception as e:
                 print(e)
         else:
-            print("WIP")
+            print("Resto de opciones sin hacer de momento")
         mostrarMenu()
         opc = int(input("Inserta una opcion: "))
 
