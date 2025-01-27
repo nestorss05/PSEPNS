@@ -1,38 +1,34 @@
 import random
-from threading import Semaphore, Thread, Lock
+from threading import Semaphore, Thread
 import time
 
-MAX = 5
+MAX = 2
 PERS = 20
 
 class Puente:
     def __init__(self):
         self.sentidoActual = None
-        self.lock = Lock()
         self.sentido1 = Semaphore(MAX)
         self.sentido2 = Semaphore(MAX)
         self.waitlist1 = 0
         self.waitlist2 = 0
 
     def entrada(self, sentido, nombre):
-        with self.lock:
-            if sentido:
-                self.waitlist1 += 1
-            else:
-                self.waitlist2 += 1
+        if sentido:
+            self.waitlist1 += 1
+        else:
+            self.waitlist2 += 1
 
-            while self.sentidoActual is not None and self.sentidoActual != sentido:
-                self.lock.release()
-                time.sleep(0.01)
-                self.lock.acquire()
+        while self.sentidoActual is not None and self.sentidoActual != sentido:
+            time.sleep(0.01)
 
-            if self.sentidoActual is None:
-                self.sentidoActual = sentido
+        if self.sentidoActual is None:
+            self.sentidoActual = sentido
 
-            if sentido:
-                self.waitlist1 -= 1
-            else:
-                self.waitlist2 -= 1
+        if sentido:
+            self.waitlist1 -= 1
+        else:
+            self.waitlist2 -= 1
 
         if sentido:
             self.sentido1.acquire()
@@ -53,17 +49,16 @@ class Puente:
         else:
             self.sentido2.release()
 
-        with self.lock:
-            if (sentido and self.sentido1._value == MAX) or (not sentido and self.sentido2._value == MAX):
-                print("Puente libre")
-                self.sentidoActual = None
+        if (sentido and self.sentido1._value == MAX) or (not sentido and self.sentido2._value == MAX):
+            print("Puente libre")
+            self.sentidoActual = None
 
-                if self.waitlist1 > 0 and self.sentido2._value == MAX:
-                    self.sentidoActual = True
-                    print("VIA LIBRE, VIA 1")
-                elif self.waitlist2 > 0 and self.sentido1._value == MAX:
-                    self.sentidoActual = False
-                    print("VIA LIBRE, VIA 2")
+            if self.waitlist1 > 0 and self.sentido2._value == MAX:
+                self.sentidoActual = True
+                print("VIA LIBRE, VIA 1")
+            elif self.waitlist2 > 0 and self.sentido1._value == MAX:
+                self.sentidoActual = False
+                print("VIA LIBRE, VIA 2")
 
 class Vehiculo(Thread):
     def __init__(self, nombre, sentido, puente):
