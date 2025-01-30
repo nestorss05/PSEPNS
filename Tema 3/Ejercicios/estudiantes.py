@@ -29,20 +29,20 @@ class Biblioteca(Thread):
             self.cond.notify_all()
 
 class Estudiante(Thread):
-    def __init__(self, biblioteca, num):
+    def __init__(self, biblioteca, num, libro1, libro2):
         Thread.__init__(self, name=str(num))
         self.biblioteca = biblioteca
+        self.libro1 = libro1
+        self.libro2 = libro2
 
     def run(self):
         print(f"{self.name} va a la biblioteca")
         time.sleep(random.randint(1, 3))
-        libro1, libro2 = random.sample(range(libros), 2)
-
-        self.biblioteca.reservar_libros(self.name, libro1, libro2)
-        print(f"({self.name}) Leyendo los libros {libro1} y {libro2}...")
+        self.biblioteca.reservar_libros(self.name, self.libro1, self.libro2)
+        print(f"({self.name}) Leyendo los libros {self.libro1} y {self.libro2}...")
         time.sleep(random.randint(3, 10))
-        print("Libros leidos")
-        self.biblioteca.devolver_libros(self.name, libro1, libro2)
+        print(f"({self.name}) Libros leidos")
+        self.biblioteca.devolver_libros(self.name, self.libro1, self.libro2)
 
 if __name__ == '__main__':
     print("Estudiantes y libros")
@@ -50,7 +50,8 @@ if __name__ == '__main__':
     hilos = []
 
     for i in range(estudiantes):
-        e = Estudiante(biblioteca, i)
+        libro1, libro2 = random.sample(range(libros), 2)
+        e = Estudiante(biblioteca, i, libro1, libro2)
         hilos.append(e)
         e.start()
 
