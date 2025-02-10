@@ -1,16 +1,21 @@
 import random
-from threading import Condition, Thread
+import time
+from threading import Condition, Thread, Barrier
 
 INTENTOS = 10
 Acertado = False
 
 class Numero:
-    def __init__(self):
+    def __init__(self, barrier):
         self.numero = random.randint(0, 100)
         self.cond = Condition()
+        self.barrier = barrier
+        self.idac = ""
 
     def adivinar_numero(self, nombre):
         global Acertado
+        self.barrier.wait()
+
         while not Acertado:
             numero = random.randint(0, 100)
 
@@ -21,14 +26,16 @@ class Numero:
                 if numero == self.numero:
                     print(f"({nombre}) MIO!!! (numero: {numero})")
                     Acertado = True
+                    self.idac = nombre
                     self.cond.notify_all()
                     break
                 else:
                     print(f"({nombre}) No acerte (numero: {numero})")
 
-            random.uniform(0.05, 0.20)
+            time.sleep(random.uniform(0.05, 0.20))
 
-        print(f"({nombre}) Mierda, ya acerto")
+        if self.idac != nombre:
+            print(f"({nombre}) Mierda, ya acerto")
 
 class Intentador(Thread):
     def __init__(self, nombre, numero):
@@ -39,7 +46,8 @@ class Intentador(Thread):
         self.numero.adivinar_numero(self.name)
 
 if __name__ == '__main__':
-    numero = Numero()
+    barrier = Barrier(INTENTOS)
+    numero = Numero(barrier)
     hilos = []
 
     for i in range(INTENTOS):
