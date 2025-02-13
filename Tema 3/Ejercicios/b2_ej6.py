@@ -36,12 +36,14 @@ class Filosofo(Thread):
         self.palillo2 = palillo2
 
     def run(self):
-        print(f"El filosofo {self.name} va a cenar")
-        time.sleep(random.randint(1, 3))
+        print(f"El filosofo {self.name} se ha puesto a filosofar")
+        time.sleep(random.randint(2, 5))
+        print(f"El filosofo {self.name} se prepara para cenar")
+        time.sleep(1)
         self.cena.coger_palillos(self.name, self.palillo1, self.palillo2)
         print(f"El filosofo {self.name} esta cenando")
         time.sleep(random.randint(3, 7))
-        print(f"El filosofo {self.name} ha terminado de cenar y le tocara volver a pensar")
+        print(f"El filosofo {self.name} ha terminado de cenar y le tocara volver a filosofar")
         self.cena.dejar_palillos(self.name, self.palillo1, self.palillo2)
 
 if __name__ == "__main__":
