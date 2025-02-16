@@ -1,24 +1,24 @@
 import random
 import time
-from threading import Thread, Barrier, Timer
+from threading import Thread, Barrier, Timer, Event
 
 COCHES = 10
 
 class Anuncier(Thread):
     def __init__(self):
         Thread.__init__(self)
-        self.anuncier = False
-        self.passer = False
+        self.anuncier = Event()
+        self.passer = Event()
         self.pos = 0
 
     def preparacionFinal(self):
         if not self.anuncier:
-            self.anuncier = True
+            self.anuncier.set()
             print("Preparados, listos...")
 
     def inicioFinal(self):
         if not self.passer:
-            self.passer = True
+            self.passer.set()
             print("YA!!!")
 
     def llegada(self):
